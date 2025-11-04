@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+def socketHostRaw = System.getenv("BUDDY_SOCKET_HOST") ?: project.findProperty("BUDDY_SOCKET_HOST") ?: "127.0.0.1"
+def socketPortRaw = System.getenv("BUDDY_SOCKET_PORT") ?: project.findProperty("BUDDY_SOCKET_PORT") ?: "5058"
+def socketPortValue
+try {
+    socketPortValue = Integer.parseInt(socketPortRaw.toString())
+} catch (NumberFormatException ignored) {
+    socketPortValue = 5058
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.bfr.buddyemotion"
+        minSdk 28
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BUDDY_SOCKET_HOST", "\"${socketHostRaw}\""
+        buildConfigField "int", "BUDDY_SOCKET_PORT", "${socketPortValue}"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation (platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+
+    implementation 'com.bluefrogrobotics.buddy:BuddySDK:2.4+'
+}

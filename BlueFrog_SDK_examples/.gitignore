@@ -1,0 +1,26 @@
+# OS / IDE files
+.DS_Store
+.idea/
+.vscode/
+.history/
+
+# Build artifacts
+*/build/
+*/.gradle/
+.gradle/
+
+# Local configuration
+local.properties
+credentials.gradle
+gradle.properties
+
+# Generated caches
+*.iml
+*.log
+
+# Android build outputs
+app/build/
+
+# Python caches
+__pycache__/
+*.pyc
