@@ -174,7 +174,6 @@ Text for Buddy> SAY:Remember to recycle your paper today!
 3. Run `streamlit app.py`, generate a climate story + illustration.  
 4. Install and launch the HelloWorld & BuddyEmotion Android apps on Buddy.  
 5. Click **Robot Story Teller**; Buddy narrates and reacts emotionally.  
-6. Optionally trigger Pepper or Line-us workflows.  
-7. Archive logs and clean sensitive data before sharing the project.
+6. Archive logs and clean sensitive data before sharing the project.
 
 Bring this workflow into any theme—ocean plastics, renewable energy, city greenery—and let Buddy guide your class toward climate action! 💚🤖🌍
