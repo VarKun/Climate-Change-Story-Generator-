@@ -167,6 +167,71 @@ streamlit run src/app.py     # from ai-driven-writing-in-climate-change-Pepper/
 Text for Buddy> SAY:Remember to recycle your paper today!
 ```
 
+## Device Mirroring (scrcpy + adb)
+
+This repo includes a prebuilt scrcpy bundle for macOS with a local `adb` binary:
+
+- Location: `scrcpy-macos-x86_64-v3.3.2/` (contains `scrcpy`, `adb`, `scrcpy-server`)
+
+### Enable Developer Mode on Buddy
+
+- On Buddy (Android), enable Developer options and turn on USB debugging.  
+- When prompted, allow USB debugging from your computer.
+
+### USB Mirroring (plug-and-play)
+
+```bash
+cd scrcpy-macos-x86_64-v3.3.2
+chmod +x scrcpy adb            # one-time, if needed
+./scrcpy                       # open live mirror and control Buddy
+```
+
+If macOS Gatekeeper blocks execution, run:
+
+```bash
+xattr -dr com.apple.quarantine scrcpy-macos-x86_64-v3.3.2
+```
+
+### Network (TCP/IP) Mirroring
+
+Option A: Connect via USB once, then switch the device to TCP mode:
+
+```bash
+cd scrcpy-macos-x86_64-v3.3.2
+./adb devices                  # verify Buddy is listed over USB
+./adb tcpip 5555               # enable TCP on Buddy
+./adb connect BUDDY_IP:5555    # replace with Buddy’s IP
+./scrcpy                       # mirror over Wi‑Fi
+```
+
+Option B: Use scrcpy’s `--tcpip` convenience flag (first time may still require USB):
+
+```bash
+./scrcpy --tcpip=BUDDY_IP:5555
+```
+
+### Deploy APKs and View Logs
+
+```bash
+cd scrcpy-macos-x86_64-v3.3.2
+./adb devices                      # list devices
+./adb install -r /path/HelloWorld.apk
+./adb install -r /path/BuddyEmotion.apk
+./adb logcat | grep -Ei "HelloWorld|BuddyEmotion"   # filter app logs
+```
+
+Tip: Temporarily add the bundle to your PATH
+
+```bash
+export PATH="$PWD/scrcpy-macos-x86_64-v3.3.2:$PATH"
+```
+
+### Troubleshooting
+
+- Device not detected: try a different USB cable/port; accept the “Allow USB debugging” prompt on Buddy.  
+- Network connect fails: ensure Buddy and your Mac are on the same LAN; confirm `BUDDY_IP` and firewall rules.  
+- Permission denied: ensure `chmod +x` on `scrcpy` and `adb`, or clear quarantine attributes via `xattr` above.
+
 ## Step-by-Step Guide
 
 1. Configure environment variables (`.env` or shell exports).  
