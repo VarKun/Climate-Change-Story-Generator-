@@ -57,7 +57,6 @@ This README documents how I run a climate change storytelling workshop for kids 
 
 Below are classroom and app screenshots stored under `photo/`:
 
-![Buddy photo 1](photo/PHOTO-2025-10-28-13-54-14.jpg)
 ![WeChat image 119](photo/WechatIMG119.jpg)
 ![WeChat image 120](photo/WechatIMG120.jpg)
 ![WeChat image 121](photo/WechatIMG121.jpg)
