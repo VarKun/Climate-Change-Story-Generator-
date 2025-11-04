@@ -232,6 +232,16 @@ export PATH="$PWD/scrcpy-macos-x86_64-v3.3.2:$PATH"
 - Network connect fails: ensure Buddy and your Mac are on the same LAN; confirm `BUDDY_IP` and firewall rules.  
 - Permission denied: ensure `chmod +x` on `scrcpy` and `adb`, or clear quarantine attributes via `xattr` above.
 
+## Photos
+
+Below are classroom and app screenshots stored under `photo/`:
+
+![Buddy photo 1](photo/PHOTO-2025-10-28-13-54-14.jpg)
+![WeChat image 119](photo/WechatIMG119.jpg)
+![WeChat image 120](photo/WechatIMG120.jpg)
+![WeChat image 121](photo/WechatIMG121.jpg)
+![Streamlit screenshot](photo/Screenshot%202025-10-30%20at%2017.51.28.png)
+
 ## Step-by-Step Guide
 
 1. Configure environment variables (`.env` or shell exports).  

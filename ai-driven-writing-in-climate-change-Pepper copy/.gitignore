@@ -1,0 +1,8 @@
+.env
+.conda/
+logs/
+outputs/
+faiss_indices/
+__pycache__/
+*.pyc
+.DS_Store
